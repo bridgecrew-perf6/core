@@ -12,8 +12,9 @@
         "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "graham-campbell/github": "^9.6",
+        "graham-campbell/github": "^10.3",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^0.3.4",
         "laravel/framework": "^8.12",
         "laravel/horizon": "^5.4",
         "laravel/sanctum": "^2.8",
@@ -22,11 +23,10 @@
         "php-http/guzzle7-adapter": "^0.1.1",
         "phpseclib/phpseclib": "^2.0",
         "robinvdvleuten/ulid": "^5.0",
+        "spatie/laravel-query-builder": "^4.0",
         "spatie/ssh": "^1.4",
         "symfony/process": "^5.2",
-        "inertiajs/inertia-laravel": "^0.3.4",
         "tightenco/ziggy": "^1.0.4"
-
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -38,7 +38,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
     },
     "extra": {
         "laravel": {
