@@ -10,6 +10,7 @@ use App\Http\Controllers\Install\UserController;
 use App\Http\Controllers\Install\WelcomeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectDeploymentController;
+use App\Http\Controllers\Self\TokenController;
 use App\Http\Controllers\ServerController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,22 @@ Route::group(['middleware' => 'installed'], function () {
 
         Route::get('/auth/github', [HomeController::class, 'redirectToProvider'])->name('auth.github');
         Route::get('/auth/github/callback', [HomeController::class, 'handleProviderCallback'])->name('auth.github.callback');
+
+        Route::group([
+            'prefix' => 'self',
+            'as' => 'self.',
+        ], function () {
+            Route::group([
+                'prefix' => 'tokens',
+                'as' => 'tokens.',
+            ], function () {
+                Route::get('/', [TokenController::class, 'index'])->name('index');
+                Route::get('/create', [TokenController::class, 'create'])->name('create');
+                Route::post('/', [TokenController::class, 'store'])->name('store');
+                Route::get('/{token}/delete', [TokenController::class, 'delete'])->name('delete');
+                Route::delete('/{token}', [TokenController::class, 'destroy'])->name('destroy');
+            });
+        });
 
         Route::group([
             'prefix' => 'servers',
