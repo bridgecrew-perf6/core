@@ -178,9 +178,9 @@ class ProjectController extends Controller
                     ->back()
                     ->withInput($request->input())
                     ->with(
-                    'error',
-                    'Rocket was unable to add the push_to_deploy webhook'
-                );
+                        'error',
+                        'Rocket was unable to add the push_to_deploy webhook'
+                    );
             }
         } elseif (! $request->push_to_deploy && $project->push_to_deploy) {
             // PTD disabled
